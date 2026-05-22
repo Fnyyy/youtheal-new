@@ -28,9 +28,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 // (Comment them back or delete them after you are done for security!)
 Route::get('/run-migrations', function () {
     try {
-        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
-        return 'Database migrations ran successfully! Output:<br><pre>' . \Illuminate\Support\Facades\Artisan::output() . '</pre>';
-    } catch (\Exception $e) {
+        \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--force' => true, '--seed' => true]);
+        return 'Database reset, migrations, and seeding ran successfully! Output:<br><pre>' . \Illuminate\Support\Facades\Artisan::output() . '</pre>';
+    } catch (\Throwable $e) {
         return 'Error: ' . $e->getMessage();
     }
 });
