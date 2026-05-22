@@ -26,21 +26,21 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
 // Temporary Vercel Migration Helper Routes
 // (Comment them back or delete them after you are done for security!)
-Route::get('/run-migrations', function () {
-    try {
-        \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--force' => true, '--seed' => true]);
-        return 'Database reset, migrations, and seeding ran successfully! Output:<br><pre>' . \Illuminate\Support\Facades\Artisan::output() . '</pre>';
-    } catch (\Throwable $e) {
-        return 'Error: ' . $e->getMessage();
-    }
-});
+// Route::get('/run-migrations', function () {
+//     try {
+//         \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--force' => true, '--seed' => true]);
+//         return 'Database reset, migrations, and seeding ran successfully! Output:<br><pre>' . \Illuminate\Support\Facades\Artisan::output() . '</pre>';
+//     } catch (\Throwable $e) {
+//         return 'Error: ' . $e->getMessage();
+//     }
+// });
 
-Route::get('/run-seeders', function () {
-    try {
-        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
-        return 'Database seeding ran successfully! Output:<br><pre>' . \Illuminate\Support\Facades\Artisan::output() . '</pre>';
-    } catch (\Exception $e) {
-        return 'Error: ' . $e->getMessage();
-    }
-});
+// Route::get('/run-seeders', function () {
+//     try {
+//         \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
+//         return 'Database seeding ran successfully! Output:<br><pre>' . \Illuminate\Support\Facades\Artisan::output() . '</pre>';
+//     } catch (\Exception $e) {
+//         return 'Error: ' . $e->getMessage();
+//     }
+// });
 
