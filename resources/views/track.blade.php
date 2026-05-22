@@ -141,11 +141,11 @@
 
     {{-- Help section (when no report shown) --}}
     @unless(isset($report))
-    <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius); padding:1.5rem; margin-top:1rem;" class="animate-fade-up-d2">
+    <div style="background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.08); border-radius:var(--radius); padding:1.5rem; margin-top:1rem;" class="animate-fade-up-d2">
         <p style="font-size:0.8rem; font-weight:700; color:var(--primary-light); margin-bottom:0.75rem;">💡 Tips</p>
         <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
             <li style="font-size:0.825rem; color:var(--text-muted); display:flex; gap:0.6rem;"><span>•</span> Kode pelacakan dikirimkan saat kamu berhasil mengirim laporan</li>
-            <li style="font-size:0.825rem; color:var(--text-muted); display:flex; gap:0.6rem;"><span>•</span> Kode terdiri dari 6 karakter (huruf & angka), contoh: <code style="color:var(--text); background:rgba(255,255,255,0.1); padding:0.1rem 0.4rem; border-radius:4px; font-family:monospace;">AB12CD</code></li>
+            <li style="font-size:0.825rem; color:var(--text-muted); display:flex; gap:0.6rem;"><span>•</span> Kode terdiri dari 6 karakter (huruf & angka), contoh: <code style="color:var(--text); background:rgba(0,0,0,0.05); padding:0.1rem 0.4rem; border-radius:4px; font-family:monospace;">AB12CD</code></li>
             <li style="font-size:0.825rem; color:var(--text-muted); display:flex; gap:0.6rem;"><span>•</span> Kode bersifat case-insensitive (huruf besar/kecil tidak masalah)</li>
         </ul>
     </div>

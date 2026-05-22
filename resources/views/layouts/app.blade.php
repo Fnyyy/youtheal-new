@@ -11,22 +11,22 @@
            DESIGN SYSTEM — SAFESPACE HIGH-TECH
         ═══════════════════════════════════════════ */
         :root {
-            --bg: #0a0a0a;
-            --bg-card: rgba(20, 20, 20, 0.55);
-            --bg-card-solid: #151515;
-            --bg-elevated: #1a1a1a;
-            --primary: #EE2D24;
-            --primary-light: #ff4f47;
-            --primary-glow: rgba(238, 45, 36, 0.35);
-            --secondary: #991b15;
-            --secondary-glow: rgba(153, 27, 21, 0.25);
-            --accent-green: #10b981;
-            --accent-cyan: #0ea5e9;
-            --text: #F5F5F5;
-            --text-muted: #a1a1aa;
-            --text-dim: #71717a;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(238, 45, 36, 0.5);
+            --bg: #fdfdfd;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --bg-card-solid: #ffffff;
+            --bg-elevated: #f9fafb;
+            --primary: #D32F2F;
+            --primary-light: #E11D48;
+            --primary-glow: rgba(211, 47, 47, 0.25);
+            --secondary: #C62828;
+            --secondary-glow: rgba(198, 40, 40, 0.15);
+            --accent-green: #059669;
+            --accent-cyan: #0284c7;
+            --text: #111827;
+            --text-muted: #4b5563;
+            --text-dim: #9ca3af;
+            --border: rgba(0, 0, 0, 0.08);
+            --border-hover: rgba(211, 47, 47, 0.3);
             --danger: #ef4444;
             --success: #10b981;
             --warning: #f59e0b;
@@ -67,8 +67,8 @@
             pointer-events: none;
             z-index: 0;
             background-image:
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
             background-size: 60px 60px;
             mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
             -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
@@ -103,10 +103,10 @@
             position: sticky;
             top: 0;
             z-index: 999;
-            background: rgba(10, 10, 10, 0.7);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .nav-content {
@@ -265,7 +265,7 @@
             inset: 0;
             border-radius: inherit;
             border: 2px solid transparent;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)) border-box;
+            background: linear-gradient(135deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01)) border-box;
             -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: destination-out;
             mask-composite: exclude;
@@ -273,7 +273,7 @@
             pointer-events: none;
         }
 
-        .card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .card:hover { border-color: rgba(0,0,0,0.1); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 
         /* ═══ TYPOGRAPHY ═══ */
         h1 {
@@ -464,8 +464,8 @@
 
         .article-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(237,28,36,0.3);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(237,28,36,0.1);
+            border-color: rgba(211,47,47,0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 0 40px rgba(211,47,47,0.05);
         }
 
         .article-card-img {
@@ -778,12 +778,12 @@ window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     const current = window.scrollY;
     if (current > 50) {
-        navbar.style.background = 'rgba(10, 10, 10, 0.9)';
-        navbar.style.borderBottom = '1px solid rgba(238, 45, 36, 0.3)';
-        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.5)';
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.borderBottom = '1px solid rgba(211, 47, 47, 0.2)';
+        navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
     } else {
-        navbar.style.background = 'rgba(10, 10, 10, 0.7)';
-        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
+        navbar.style.background = 'rgba(255, 255, 255, 0.9)';
+        navbar.style.borderBottom = '1px solid rgba(0, 0, 0, 0.05)';
         navbar.style.boxShadow = 'none';
     }
     lastScroll = current;

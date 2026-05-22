@@ -73,14 +73,14 @@
         </div>
 
         {{-- Developer Info Chips --}}
-        <div style="position:absolute; bottom:20px; right:-20px; background:rgba(15,15,15,0.8); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:0.8rem 1.1rem; backdrop-filter:blur(8px); z-index:2;">
+        <div style="position:absolute; bottom:20px; right:-20px; background:rgba(255,255,255,0.95); border:1px solid rgba(0,0,0,0.08); border-radius:4px; padding:0.8rem 1.1rem; backdrop-filter:blur(8px); z-index:2; box-shadow:0 10px 25px rgba(0,0,0,0.05);">
             <div style="display:flex; align-items:center; gap:0.5rem;">
                 <div style="width:8px;height:8px;background:var(--success);border-radius:50%;"></div>
                 <span style="font-size:0.72rem; font-weight:700; color:var(--text-muted); font-family:monospace;">ENCRYPTED</span>
             </div>
         </div>
 
-        <div style="position:absolute; top:20px; left:-20px; background:rgba(15,15,15,0.8); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:0.8rem 1.1rem; backdrop-filter:blur(8px); z-index:2;">
+        <div style="position:absolute; top:20px; left:-20px; background:rgba(255,255,255,0.95); border:1px solid rgba(0,0,0,0.08); border-radius:4px; padding:0.8rem 1.1rem; backdrop-filter:blur(8px); z-index:2; box-shadow:0 10px 25px rgba(0,0,0,0.05);">
             <div style="display:flex; align-items:center; gap:0.5rem;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
                 <span style="font-size:0.72rem; font-weight:700; color:var(--text-muted); font-family:monospace;">SYSTEM_ACTIVE</span>

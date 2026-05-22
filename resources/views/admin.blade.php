@@ -7,7 +7,7 @@
     .navbar, footer, .sos-btn, .cursor-glow, .bg-mesh, .bg-grid, #particles { display: none !important; }
     
     body {
-        background: #0a0a0a !important;
+        background: #fdfdfd !important;
         font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
         margin: 0; padding: 0;
         overflow: hidden; /* Prevent body scroll, let main-content scroll */
@@ -19,15 +19,15 @@
         height: 100vh;
         width: 100%;
         max-width: 100vw;
-        color: #F5F5F5;
+        color: #111827;
         overflow-x: hidden;
     }
 
     /* Sidebar */
     .sidebar {
         width: 280px;
-        background: rgba(12, 12, 12, 0.8);
-        border-right: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.95);
+        border-right: 1px solid rgba(0, 0, 0, 0.08);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         display: flex;
@@ -51,7 +51,7 @@
         gap: 0.85rem;
         padding: 0.85rem 1rem;
         border-radius: 8px;
-        color: #a1a1aa;
+        color: #4b5563;
         text-decoration: none;
         font-weight: 600;
         font-size: 0.95rem;
@@ -61,14 +61,14 @@
     }
 
     .nav-item:hover {
-        color: #F5F5F5;
-        background: rgba(255, 255, 255, 0.03);
+        color: #111827;
+        background: rgba(0, 0, 0, 0.05);
     }
 
     .nav-item.active {
-        color: #EE2D24;
-        background: rgba(238, 45, 36, 0.08);
-        border: 1px solid rgba(238, 45, 36, 0.2);
+        color: #D32F2F;
+        background: rgba(211, 47, 47, 0.08);
+        border: 1px solid rgba(211, 47, 47, 0.2);
     }
 
     /* Main Content Area */
@@ -77,7 +77,7 @@
         min-width: 0; /* Prevents flex item from expanding past viewport */
         overflow-y: auto;
         padding: 2.5rem 3.5rem;
-        background: #0a0a0a;
+        background: #f9fafb;
     }
 
     /* Content Sections */
@@ -121,8 +121,9 @@
     }
 
     .metric-card {
-        background: rgba(18, 18, 18, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
         border-radius: 12px;
         padding: 1.5rem;
         display: flex;
@@ -132,15 +133,16 @@
     }
 
     .metric-card:hover {
-        border-color: rgba(255, 255, 255, 0.15);
-        background: rgba(24, 24, 24, 0.8);
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+        transform: translateY(-2px);
     }
 
     .metric-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        color: #a1a1aa;
+        color: #4b5563;
         font-size: 0.85rem;
         font-weight: 600;
     }
@@ -148,16 +150,17 @@
     .metric-value {
         font-size: 2rem;
         font-weight: 800;
-        color: #F5F5F5;
+        color: #111827;
     }
 
     /* Data Table Section */
     .table-container {
-        background: rgba(15, 15, 15, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
         border-radius: 12px;
         padding: 1.5rem;
         margin-bottom: 3rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
     }
 
     .table-header {
@@ -175,24 +178,24 @@
     .admin-table th {
         text-align: left;
         padding: 1rem;
-        color: #71717a;
+        color: #6b7280;
         font-weight: 600;
         font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .admin-table td {
         padding: 1.25rem 1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         font-size: 0.9rem;
-        color: #d4d4d8;
+        color: #374151;
         vertical-align: middle;
     }
 
     .admin-table tr:hover td {
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(0, 0, 0, 0.02);
     }
 
     /* Badges */
@@ -206,10 +209,10 @@
         letter-spacing: 0.5px;
     }
 
-    .tag-red { background: rgba(238, 45, 36, 0.1); color: #ff4f47; border: 1px solid rgba(238, 45, 36, 0.2); }
-    .tag-yellow { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
-    .tag-green { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.2); }
-    .tag-gray { background: rgba(255, 255, 255, 0.05); color: #a1a1aa; border: 1px solid rgba(255, 255, 255, 0.1); }
+    .tag-red { background: rgba(238, 45, 36, 0.1); color: #d1151c; border: 1px solid rgba(238, 45, 36, 0.2); }
+    .tag-yellow { background: rgba(245, 158, 11, 0.1); color: #b45309; border: 1px solid rgba(245, 158, 11, 0.2); }
+    .tag-green { background: rgba(16, 185, 129, 0.1); color: #047857; border: 1px solid rgba(16, 185, 129, 0.2); }
+    .tag-gray { background: rgba(0, 0, 0, 0.05); color: #4b5563; border: 1px solid rgba(0, 0, 0, 0.1); }
 
     /* Buttons */
     .btn-ws {
@@ -227,18 +230,19 @@
     }
 
     .btn-ws-primary {
-        background: #EE2D24;
+        background: #D32F2F;
         color: white;
     }
-    .btn-ws-primary:hover { background: #d1151c; }
+    .btn-ws-primary:hover { background: #b71c1c; }
 
     .btn-ws-outline {
-        background: rgba(255, 255, 255, 0.03);
-        color: #F5F5F5;
-        border-color: rgba(255, 255, 255, 0.1);
+        background: #ffffff;
+        color: #374151;
+        border-color: rgba(0, 0, 0, 0.15);
     }
     .btn-ws-outline:hover {
-        background: rgba(255, 255, 255, 0.08);
+        background: #f9fafb;
+        border-color: rgba(0, 0, 0, 0.3);
     }
 
     .btn-icon {
@@ -247,29 +251,30 @@
         justify-content: center;
         width: 32px; height: 32px;
         border-radius: 6px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        color: #a1a1aa;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        color: #4b5563;
         cursor: pointer;
         transition: all 0.2s;
     }
     .btn-icon:hover {
-        color: #F5F5F5;
-        background: rgba(255, 255, 255, 0.1);
+        color: #111827;
+        background: #f3f4f6;
     }
 
     /* Modal / Expanded Row */
     .detail-row {
-        background: rgba(10, 10, 10, 0.95);
+        background: #f9fafb;
     }
     .detail-panel {
         padding: 2rem;
-        border-left: 2px solid #EE2D24;
+        border-left: 2px solid #D32F2F;
         margin: 1rem;
-        background: rgba(20, 20, 20, 0.6);
+        background: #ffffff;
         border-radius: 0 8px 8px 0;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-left: 3px solid #EE2D24;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-left: 3px solid #D32F2F;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
     }
 
     /* Print Styles */
@@ -481,6 +486,19 @@
                                                 <strong>Deskripsi Kejadian:</strong><br>
                                                 {{ $report->description }}
                                             </div>
+
+                                            @if($report->photo_path)
+                                            <div style="margin-bottom: 1.5rem; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.05); padding:1rem; border-radius:6px;">
+                                                <strong style="display:block; margin-bottom: 0.75rem; font-size: 0.9rem;">Bukti Kejadian Terlampir:</strong>
+                                                <div style="border:1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; display: inline-block; background: #000;">
+                                                    <a href="{{ asset('storage/' . $report->photo_path) }}" target="_blank" title="Buka gambar ukuran penuh">
+                                                        <img src="{{ asset('storage/' . $report->photo_path) }}" alt="Bukti Pembullyan" style="max-height: 250px; max-width: 100%; display: block; object-fit: contain; cursor: zoom-in; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                                                    </a>
+                                                </div>
+                                                <p style="font-size:0.75rem; color:#71717a; margin-top:0.5rem; margin-bottom:0;">*Klik gambar untuk memperbesar di tab baru.</p>
+                                            </div>
+                                            @endif
+
 
                                             <div style="display:flex; gap:2rem; font-size:0.85rem;">
                                                 <div>
