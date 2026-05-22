@@ -6,6 +6,13 @@
     /* Hide default layout elements for Workspace mode */
     .navbar, footer, .sos-btn, .cursor-glow, .bg-mesh, .bg-grid, #particles { display: none !important; }
     
+    /* Remove page wrapper constraints for full-screen workspace */
+    .page-wrapper {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
     body {
         background: #fdfdfd !important;
         font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
