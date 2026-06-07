@@ -284,30 +284,7 @@
         box-shadow: 0 4px 6px rgba(0,0,0,0.02);
     }
 
-    /* Print Styles */
-    @media print {
-        body * {
-            visibility: hidden;
-        }
-        .print-area, .print-area * {
-            visibility: visible;
-        }
-        .print-area {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            background: white !important;
-            color: black !important;
-            padding: 2rem !important;
-            border: none !important;
-        }
-        .print-area form, .print-area button, .print-area .btn-ws {
-            display: none !important;
-        }
-        .print-area h4 { color: #000 !important; }
-        .print-area div { background: white !important; border-color: #ccc !important; color: black !important; }
-    }
+    /* Print Styles - no longer used, printing is handled via a new window */
 </style>
 
 <div class="workspace">
@@ -415,7 +392,7 @@
                 </div>
                 <div style="display:flex; gap:0.75rem;">
                     <div style="position:relative;">
-                        <input type="text" id="searchInput" placeholder="Cari ID Tracking..." style="background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); padding:0.6rem 1rem 0.6rem 2.5rem; border-radius:6px; color:#F5F5F5; font-size:0.85rem; width:200px; font-family:inherit;" onkeyup="filterTable()">
+                        <input type="text" id="searchInput" placeholder="Cari ID Tracking..." style="background:#ffffff; border:1px solid rgba(0,0,0,0.15); padding:0.6rem 1rem 0.6rem 2.5rem; border-radius:6px; color:#111827; font-size:0.85rem; width:200px; font-family:inherit;" onkeyup="filterTable()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2" style="position:absolute; left:10px; top:50%; transform:translateY(-50%);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </div>
                     <button onclick="switchTab('reports', document.querySelector('.nav-item:nth-child(3)'))" class="btn-ws btn-ws-outline">
@@ -445,7 +422,7 @@
                     <tbody>
                         @foreach($reports as $report)
                         <tr>
-                            <td><span style="font-family:monospace; font-weight:700; color:#F5F5F5;">{{ $report->tracking_code }}</span></td>
+                            <td><span style="font-family:monospace; font-weight:700; color:#111827;">{{ $report->tracking_code }}</span></td>
                             <td>{{ $report->created_at->format('d M Y, H:i') }}</td>
                             <td><span class="tag tag-gray">{{ $report->category->name ?? 'Lainnya' }}</span></td>
                             <td>
@@ -489,13 +466,13 @@
                                         <div>
                                             <h4 style="font-size:0.8rem; text-transform:uppercase; color:#71717a; margin-bottom:1rem;">Detail Laporan</h4>
                                             
-                                            <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.05); padding:1rem; border-radius:6px; font-size:0.9rem; line-height:1.6; margin-bottom:1rem;">
+                                            <div style="background:#f9fafb; border:1px solid rgba(0,0,0,0.08); padding:1rem; border-radius:6px; font-size:0.9rem; line-height:1.6; margin-bottom:1rem;">
                                                 <strong>Deskripsi Kejadian:</strong><br>
                                                 {{ $report->description }}
                                             </div>
 
                                             @if($report->photo_path)
-                                            <div style="margin-bottom: 1.5rem; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.05); padding:1rem; border-radius:6px;">
+                                            <div style="margin-bottom: 1.5rem; background:#f9fafb; border:1px solid rgba(0,0,0,0.08); padding:1rem; border-radius:6px;">
                                                 <strong style="display:block; margin-bottom: 0.75rem; font-size: 0.9rem;">Bukti Kejadian Terlampir:</strong>
                                                 <div style="border:1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; display: inline-block; background: #000;">
                                                     <a href="{{ asset('storage/' . $report->photo_path) }}" target="_blank" title="Buka gambar ukuran penuh">
@@ -524,14 +501,14 @@
                                         </div>
 
                                         {{-- Right side: Resolution Workflow --}}
-                                        <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); padding:1.5rem; border-radius:8px;">
+                                        <div style="background:#f9fafb; border:1px solid rgba(0,0,0,0.08); padding:1.5rem; border-radius:8px;">
                                             <h4 style="font-size:0.8rem; text-transform:uppercase; color:#71717a; margin-bottom:1rem;">Alur Penyelesaian</h4>
                                             
                                             <form action="{{ route('admin.response.store', $report->id) }}" method="POST">
                                                 @csrf
                                                 <div style="margin-bottom:1rem;">
                                                     <label style="display:block; font-size:0.8rem; color:#a1a1aa; margin-bottom:0.4rem;">Perbarui Status</label>
-                                                    <select name="status" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#F5F5F5; padding:0.6rem; border-radius:6px; font-family:inherit; font-size:0.85rem;">
+                                                    <select name="status" style="width:100%; background:#ffffff; border:1px solid rgba(0,0,0,0.15); color:#111827; padding:0.6rem; border-radius:6px; font-family:inherit; font-size:0.85rem;">
                                                         <option value="Pending" {{ $report->status == 'Pending' ? 'selected' : '' }}>Pending (Perlu Tindakan)</option>
                                                         <option value="Investigating">Sedang Diproses (Investigasi)</option>
                                                         <option value="Ditanggapi" {{ $report->status == 'Ditanggapi' ? 'selected' : '' }}>Selesai (Ditanggapi)</option>
@@ -540,7 +517,7 @@
 
                                                 <div style="margin-bottom:1.5rem;">
                                                     <label style="display:block; font-size:0.8rem; color:#a1a1aa; margin-bottom:0.4rem;">Pesan / Feedback Staff (Dikirim ke Pelapor)</label>
-                                                    <textarea name="message" rows="3" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#F5F5F5; padding:0.6rem; border-radius:6px; font-family:inherit; font-size:0.85rem; resize:vertical;" placeholder="Tuliskan tindakan yang telah diambil atau pesan dukungan..."></textarea>
+                                                    <textarea name="message" rows="3" style="width:100%; background:#ffffff; border:1px solid rgba(0,0,0,0.15); color:#111827; padding:0.6rem; border-radius:6px; font-family:inherit; font-size:0.85rem; resize:vertical;" placeholder="Tuliskan tindakan yang telah diambil atau pesan dukungan..."></textarea>
                                                 </div>
 
                                                 <button type="submit" class="btn-ws btn-ws-primary" style="width:100%; justify-content:center;">
@@ -576,7 +553,7 @@
                         <p style="font-size:0.85rem; color:#71717a; margin:0;">Lihat statistik dan rekap keseluruhan berdasarkan bulan tertentu.</p>
                     </div>
                     <div style="display:flex; gap:1rem;">
-                        <select id="recapMonthSelect" style="background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#F5F5F5; padding:0.6rem 1rem; border-radius:6px; font-family:inherit; min-width:150px;" onchange="updateRecap()">
+                        <select id="recapMonthSelect" style="background:#ffffff; border:1px solid rgba(0,0,0,0.15); color:#111827; padding:0.6rem 1rem; border-radius:6px; font-family:inherit; min-width:150px;" onchange="updateRecap()">
                             @php
                                 $months = [];
                                 foreach($reports as $r) {
@@ -598,16 +575,16 @@
                     </div>
                 </div>
 
-                <div id="recapPrintArea" style="background:rgba(10,10,10,0.5); padding:1.5rem; border-radius:8px; border:1px solid rgba(255,255,255,0.05);">
-                    <div style="text-align:center; margin-bottom:2rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.1);">
+                <div id="recapPrintArea" style="background:#ffffff; padding:1.5rem; border-radius:8px; border:1px solid rgba(0,0,0,0.08); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                    <div style="text-align:center; margin-bottom:2rem; padding-bottom:1rem; border-bottom:1px solid rgba(0,0,0,0.1);">
                         <h2 style="font-size:1.4rem; margin-bottom:0.25rem;">Laporan Konselor SafeSpace</h2>
                         <p style="color:#a1a1aa; font-size:0.9rem;" id="recapLabel">Rekapitulasi: -</p>
                     </div>
                     
                     <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
-                        <div style="background:rgba(255,255,255,0.03); padding:1.25rem; border-radius:8px;">
+                        <div style="background:#f9fafb; padding:1.25rem; border-radius:8px; border:1px solid rgba(0,0,0,0.05);">
                             <p style="color:#71717a; font-size:0.8rem; text-transform:uppercase; margin-bottom:0.5rem; font-weight:700;">Total Kasus Masuk</p>
-                            <p style="font-size:2rem; font-weight:800; color:#F5F5F5; margin:0;" id="recapTotal">0</p>
+                            <p style="font-size:2rem; font-weight:800; color:#111827; margin:0;" id="recapTotal">0</p>
                         </div>
                         <div style="background:rgba(238,45,36,0.05); padding:1.25rem; border-radius:8px;">
                             <p style="color:#EE2D24; font-size:0.8rem; text-transform:uppercase; margin-bottom:0.5rem; font-weight:700;">Masih Pending / Perlu Tindakan</p>
@@ -625,10 +602,10 @@
                     
                     <div style="margin-top:2rem;">
                         <p style="color:#71717a; font-size:0.8rem; text-transform:uppercase; margin-bottom:1rem; font-weight:700;">Rincian Berdasarkan Keparahan</p>
-                        <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:0.5rem; margin-bottom:0.5rem;">
+                        <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:0.5rem; margin-bottom:0.5rem;">
                             <span>Tinggi (Darurat)</span> <strong id="recapHigh" style="color:#ff4f47;">0</strong>
                         </div>
-                        <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:0.5rem; margin-bottom:0.5rem;">
+                        <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:0.5rem; margin-bottom:0.5rem;">
                             <span>Sedang</span> <strong id="recapMedium" style="color:#fbbf24;">0</strong>
                         </div>
                         <div style="display:flex; justify-content:space-between; padding-bottom:0.5rem;">
@@ -712,11 +689,11 @@
                     @csrf
                     <div>
                         <label style="display:block; font-size:0.8rem; color:#a1a1aa; margin-bottom:0.4rem;">Judul Artikel</label>
-                        <input type="text" name="title" required style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#F5F5F5; padding:0.8rem; border-radius:6px; font-family:inherit;">
+                        <input type="text" name="title" required style="width:100%; background:#ffffff; border:1px solid rgba(0,0,0,0.15); color:#111827; padding:0.8rem; border-radius:6px; font-family:inherit;">
                     </div>
                     <div>
                         <label style="display:block; font-size:0.8rem; color:#a1a1aa; margin-bottom:0.4rem;">Kategori Edukasi</label>
-                        <select name="category_id" required style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#F5F5F5; padding:0.8rem; border-radius:6px; font-family:inherit;">
+                        <select name="category_id" required style="width:100%; background:#ffffff; border:1px solid rgba(0,0,0,0.15); color:#111827; padding:0.8rem; border-radius:6px; font-family:inherit;">
                             <option value="">— Pilih Kategori —</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -725,7 +702,7 @@
                     </div>
                     <div>
                         <label style="display:block; font-size:0.8rem; color:#a1a1aa; margin-bottom:0.4rem;">Isi Konten</label>
-                        <textarea name="content" rows="6" required style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#F5F5F5; padding:0.8rem; border-radius:6px; font-family:inherit; resize:vertical;"></textarea>
+                        <textarea name="content" rows="6" required style="width:100%; background:#ffffff; border:1px solid rgba(0,0,0,0.15); color:#111827; padding:0.8rem; border-radius:6px; font-family:inherit; resize:vertical;"></textarea>
                     </div>
                     <button type="submit" class="btn-ws btn-ws-primary" style="justify-content:center; padding:0.8rem;">Publish Artikel</button>
                 </form>
@@ -752,14 +729,14 @@
                     @csrf
                     <div>
                         <label style="display:block; font-size:0.8rem; color:#a1a1aa; margin-bottom:0.4rem;">Nama Kategori</label>
-                        <input type="text" name="name" required style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); color:#F5F5F5; padding:0.8rem; border-radius:6px; font-family:inherit;">
+                        <input type="text" name="name" required style="width:100%; background:#ffffff; border:1px solid rgba(0,0,0,0.15); color:#111827; padding:0.8rem; border-radius:6px; font-family:inherit;">
                     </div>
                     <button type="submit" class="btn-ws btn-ws-outline" style="justify-content:center; padding:0.8rem;">Simpan Kategori</button>
                 </form>
                 
-                <hr style="border:0; border-top:1px solid rgba(255,255,255,0.05); margin:2rem 0;">
+                <hr style="border:0; border-top:1px solid rgba(0,0,0,0.1); margin:2rem 0;">
                 
-                <h3 style="margin-bottom:1rem; font-size:1rem; color:#d4d4d8;">Kategori Aktif</h3>
+                <h3 style="margin-bottom:1rem; font-size:1rem; color:#374151;">Kategori Aktif</h3>
                 <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
                     @foreach($categories as $cat)
                         <span class="tag tag-red" style="font-size:0.85rem; padding:0.4rem 0.8rem;">{{ $cat->name }}</span>
@@ -799,26 +776,135 @@ function switchTab(tabId, element) {
 
 // Print specific report row
 function printReport(id) {
-    const detailPanel = document.getElementById('detail-' + id).querySelector('.detail-panel');
-    if(detailPanel) {
-        detailPanel.classList.add('print-area');
-        window.print();
-        setTimeout(() => {
-            detailPanel.classList.remove('print-area');
-        }, 1000);
+    // First make sure the detail row is visible so we can read its content
+    const detailRow = document.getElementById('detail-' + id);
+    if (!detailRow) return;
+
+    const wasHidden = (detailRow.style.display === 'none' || detailRow.style.display === '');
+    if (wasHidden) detailRow.style.display = 'table-row';
+
+    const detailPanel = detailRow.querySelector('.detail-panel');
+    if (!detailPanel) return;
+
+    // Gather report info from the table row before the detail row
+    const reportRow = detailRow.previousElementSibling;
+    let trackingId = '', tanggal = '', kategori = '', keparahan = '', status = '';
+    if (reportRow) {
+        const cells = reportRow.querySelectorAll('td');
+        trackingId = cells[0] ? cells[0].innerText.trim() : '';
+        tanggal = cells[1] ? cells[1].innerText.trim() : '';
+        kategori = cells[2] ? cells[2].innerText.trim() : '';
+        keparahan = cells[3] ? cells[3].innerText.trim() : '';
+        status = cells[4] ? cells[4].innerText.trim() : '';
     }
+
+    // Get detail content
+    const leftPanel = detailPanel.querySelector('div > div:first-child');
+    let deskripsi = '', terduga = '', waktu = '', lokasi = '', buktiSrc = '';
+    if (leftPanel) {
+        const descBox = leftPanel.querySelector('div[style*="background"]');
+        if (descBox) {
+            // Get text after 'Deskripsi Kejadian:'
+            const fullText = descBox.innerText.trim();
+            deskripsi = fullText.replace('Deskripsi Kejadian:', '').trim();
+        }
+        const infoDiv = leftPanel.querySelector('div[style*="display:flex"]');
+        if (infoDiv) {
+            const infoDivs = infoDiv.querySelectorAll(':scope > div');
+            infoDivs.forEach(d => {
+                const label = d.querySelector('span');
+                const value = d.querySelector('strong');
+                if (label && value) {
+                    const l = label.innerText.trim().toLowerCase();
+                    if (l.includes('terduga')) terduga = value.innerText.trim();
+                    if (l.includes('waktu')) waktu = value.innerText.trim();
+                    if (l.includes('lokasi')) lokasi = value.innerText.trim();
+                }
+            });
+        }
+        const img = leftPanel.querySelector('img');
+        if (img) buktiSrc = img.src;
+    }
+
+    // Open print window
+    const printWin = window.open('', '_blank', 'width=800,height=600');
+    printWin.document.write(`
+    <html><head><title>Laporan ${trackingId}</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; color: #111; padding: 2rem; }
+        .header { text-align:center; border-bottom:2px solid #D32F2F; padding-bottom:1rem; margin-bottom:1.5rem; }
+        .header h1 { font-size:1.4rem; color:#D32F2F; margin-bottom:0.25rem; }
+        .header p { font-size:0.85rem; color:#555; }
+        .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem 2rem; margin-bottom:1.5rem; }
+        .info-item label { display:block; font-size:0.75rem; color:#888; text-transform:uppercase; font-weight:700; margin-bottom:0.2rem; }
+        .info-item p { font-size:0.95rem; font-weight:600; }
+        .section-title { font-size:0.8rem; color:#888; text-transform:uppercase; font-weight:700; letter-spacing:0.5px; margin-bottom:0.5rem; border-bottom:1px solid #eee; padding-bottom:0.3rem; }
+        .desc-box { background:#f9fafb; border:1px solid #e5e7eb; padding:1rem; border-radius:6px; line-height:1.7; font-size:0.9rem; margin-bottom:1.5rem; white-space:pre-wrap; }
+        .bukti-img { max-width:100%; max-height:300px; border:1px solid #e5e7eb; border-radius:6px; margin-top:0.5rem; }
+        .footer { margin-top:2rem; border-top:1px solid #eee; padding-top:1rem; text-align:center; font-size:0.75rem; color:#aaa; }
+        @media print { body { padding:1.5rem; } }
+    </style>
+    </head><body>
+        <div class="header">
+            <h1>YOUTHEAL.ID &mdash; Laporan Kasus</h1>
+            <p>Dokumen Cetak Otomatis &bull; Rahasia</p>
+        </div>
+        <div class="info-grid">
+            <div class="info-item"><label>Tracking ID</label><p>${trackingId}</p></div>
+            <div class="info-item"><label>Tanggal Masuk</label><p>${tanggal}</p></div>
+            <div class="info-item"><label>Kategori</label><p>${kategori}</p></div>
+            <div class="info-item"><label>Keparahan</label><p>${keparahan}</p></div>
+            <div class="info-item"><label>Status</label><p>${status}</p></div>
+            <div class="info-item"><label>Terduga Pelaku</label><p>${terduga || '-'}</p></div>
+            <div class="info-item"><label>Waktu Kejadian</label><p>${waktu || '-'}</p></div>
+            <div class="info-item"><label>Lokasi Kejadian</label><p>${lokasi || '-'}</p></div>
+        </div>
+        <p class="section-title">Deskripsi Kejadian</p>
+        <div class="desc-box">${deskripsi || '-'}</div>
+        ${buktiSrc ? '<p class="section-title">Bukti Terlampir</p><img class="bukti-img" src="' + buktiSrc + '">' : ''}
+        <div class="footer">Dicetak pada ${new Date().toLocaleString('id-ID')} &bull; YOUTHEAL.ID Platform Anti Bullying</div>
+    </body></html>
+    `);
+    printWin.document.close();
+    // Wait for images to load then print
+    printWin.onload = function() {
+        printWin.focus();
+        printWin.print();
+    };
+    // Fallback if onload doesn't fire (some browsers)
+    setTimeout(() => { printWin.focus(); printWin.print(); }, 500);
+
+    // Restore hidden state
+    if (wasHidden) detailRow.style.display = 'none';
 }
 
 // Print Monthly Recap
 function printRecap() {
     const recapPanel = document.getElementById('recapPrintArea');
-    if(recapPanel) {
-        recapPanel.classList.add('print-area');
-        window.print();
-        setTimeout(() => {
-            recapPanel.classList.remove('print-area');
-        }, 1000);
-    }
+    if (!recapPanel) return;
+
+    const printWin = window.open('', '_blank', 'width=800,height=600');
+    printWin.document.write(`
+    <html><head><title>Rekap Laporan Bulanan</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; color: #111; padding: 2rem; }
+        @media print { body { padding:1.5rem; } }
+    </style>
+    </head><body>
+        ${recapPanel.innerHTML}
+        <div style="margin-top:2rem; border-top:1px solid #eee; padding-top:1rem; text-align:center; font-size:0.75rem; color:#aaa;">
+            Dicetak pada ${new Date().toLocaleString('id-ID')} &bull; YOUTHEAL.ID Platform Anti Bullying
+        </div>
+    </body></html>
+    `);
+    printWin.document.close();
+    printWin.onload = function() {
+        printWin.focus();
+        printWin.print();
+    };
+    setTimeout(() => { printWin.focus(); printWin.print(); }, 500);
 }
 
 // Download Table to CSV (Kept as fallback just in case)
