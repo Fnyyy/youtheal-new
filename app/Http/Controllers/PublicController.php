@@ -36,7 +36,7 @@ class PublicController extends Controller
 
         $photo_path = null;
         if ($request->hasFile('photo')) {
-            $photo_path = $request->file('photo')->store('reports', 'public');
+            $photo_path = $request->file('photo')->store('reports', 's3');
         }
 
         // Generate tracking code

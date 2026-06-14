@@ -475,8 +475,8 @@
                                             <div style="margin-bottom: 1.5rem; background:#f9fafb; border:1px solid rgba(0,0,0,0.08); padding:1rem; border-radius:6px;">
                                                 <strong style="display:block; margin-bottom: 0.75rem; font-size: 0.9rem;">Bukti Kejadian Terlampir:</strong>
                                                 <div style="border:1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; display: inline-block; background: #000;">
-                                                    <a href="{{ asset('storage/' . $report->photo_path) }}" target="_blank" title="Buka gambar ukuran penuh">
-                                                        <img src="{{ asset('storage/' . $report->photo_path) }}" alt="Bukti Pembullyan" style="max-height: 250px; max-width: 100%; display: block; object-fit: contain; cursor: zoom-in; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                                                    <a href="{{ Storage::url($report->photo_path) }}" target="_blank" title="Buka gambar ukuran penuh">
+                                                        <img src="{{ Storage::url($report->photo_path) }}" alt="Bukti Pembullyan" style="max-height: 250px; max-width: 100%; display: block; object-fit: contain; cursor: zoom-in; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                                                     </a>
                                                 </div>
                                                 <p style="font-size:0.75rem; color:#71717a; margin-top:0.5rem; margin-bottom:0;">*Klik gambar untuk memperbesar di tab baru.</p>
