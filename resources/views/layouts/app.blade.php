@@ -433,7 +433,8 @@
         .badge-green  { background: rgba(34,211,165,0.12); color: var(--accent-green); border: 1px solid rgba(34,211,165,0.25); }
         .badge-yellow { background: rgba(245,158,11,0.12); color: var(--warning); border: 1px solid rgba(245,158,11,0.25); }
 
-        .status-Pending   { background: rgba(245,158,11,0.12); color: var(--warning); border: 1px solid rgba(245,158,11,0.25); padding: 0.3rem 0.8rem; border-radius: 99px; font-size: 0.75rem; font-weight: 700; }
+        .status-Pending   { background: rgba(237,28,36,0.12); color: var(--primary-light); border: 1px solid rgba(237,28,36,0.25); padding: 0.3rem 0.8rem; border-radius: 99px; font-size: 0.75rem; font-weight: 700; }
+        .status-Investigating { background: rgba(245,158,11,0.12); color: var(--warning); border: 1px solid rgba(245,158,11,0.25); padding: 0.3rem 0.8rem; border-radius: 99px; font-size: 0.75rem; font-weight: 700; }
         .status-Ditanggapi { background: rgba(34,211,165,0.12); color: var(--accent-green); border: 1px solid rgba(34,211,165,0.25); padding: 0.3rem 0.8rem; border-radius: 99px; font-size: 0.75rem; font-weight: 700; }
 
         /* ═══ ARTICLE GRID ═══ */

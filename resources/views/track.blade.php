@@ -52,7 +52,15 @@
                 <span class="badge badge-red" style="margin-bottom:0.5rem;">{{ $report->category->name ?? 'Laporan' }}</span>
                 <h3 style="font-family:monospace; font-size:1.1rem; color:var(--primary-light);">#{{ $report->tracking_code }}</h3>
             </div>
-            <span class="status-{{ $report->status }}">{{ $report->status }}</span>
+            <span class="status-{{ $report->status }}">
+                @if($report->status == 'Pending')
+                    Pending
+                @elseif($report->status == 'Investigating')
+                    Sedang Diproses
+                @else
+                    Ditanggapi
+                @endif
+            </span>
         </div>
 
         {{-- Timeline progress (Futuristic Vertical) --}}
@@ -62,15 +70,15 @@
                 
                 <div style="position:relative; padding-bottom:2.5rem; padding-left:2.5rem;">
                     <div style="position:absolute; left:0; top:0; width:36px; height:36px; transform:translateX(-50%); border-radius:8px; background:var(--accent-green); border:1px solid rgba(34,211,165,0.8); color:white; display:flex; align-items:center; justify-content:center; font-size:1rem; z-index:2;">✓</div>
-                    <div style="position:absolute; left:0; top:36px; bottom:0; width:2px; transform:translateX(-50%); background:{{ $report->status == 'Ditanggapi' ? 'var(--accent-green)' : 'var(--border)' }}; z-index:1;"></div>
+                    <div style="position:absolute; left:0; top:36px; bottom:0; width:2px; transform:translateX(-50%); background:{{ in_array($report->status, ['Investigating', 'Ditanggapi']) ? 'var(--accent-green)' : 'var(--border)' }}; z-index:1;"></div>
                     <p style="font-size:1rem; color:var(--text); font-weight:800; margin-bottom:0.25rem;">Laporan Diterima</p>
                     <p style="font-size:0.8rem; color:var(--text-dim);">Sistem telah mencatat laporan anonim Anda dengan aman.</p>
                 </div>
                 
                 <div style="position:relative; padding-bottom:2.5rem; padding-left:2.5rem;">
-                    <div style="position:absolute; left:0; top:0; width:36px; height:36px; transform:translateX(-50%); border-radius:8px; background:{{ $report->status == 'Ditanggapi' ? 'var(--accent-green)' : 'var(--bg-card)' }}; border:1px solid {{ $report->status == 'Ditanggapi' ? 'rgba(34,211,165,0.8)' : 'var(--border)' }}; color:{{ $report->status == 'Ditanggapi' ? 'white' : 'var(--text-dim)' }}; display:flex; align-items:center; justify-content:center; font-size:1rem; z-index:2;">{{ $report->status == 'Ditanggapi' ? '✓' : '⏳' }}</div>
+                    <div style="position:absolute; left:0; top:0; width:36px; height:36px; transform:translateX(-50%); border-radius:8px; background:{{ in_array($report->status, ['Investigating', 'Ditanggapi']) ? 'var(--accent-green)' : 'var(--bg-card)' }}; border:1px solid {{ in_array($report->status, ['Investigating', 'Ditanggapi']) ? 'rgba(34,211,165,0.8)' : 'var(--border)' }}; color:{{ in_array($report->status, ['Investigating', 'Ditanggapi']) ? 'white' : 'var(--text-dim)' }}; display:flex; align-items:center; justify-content:center; font-size:1rem; z-index:2;">{{ $report->status == 'Ditanggapi' ? '✓' : '⏳' }}</div>
                     <div style="position:absolute; left:0; top:36px; bottom:0; width:2px; transform:translateX(-50%); background:{{ $report->status == 'Ditanggapi' ? 'var(--accent-green)' : 'var(--border)' }}; z-index:1;"></div>
-                    <p style="font-size:1rem; color:{{ $report->status == 'Ditanggapi' ? 'var(--text)' : 'var(--text-dim)' }}; font-weight:800; margin-bottom:0.25rem;">Sedang Ditinjau</p>
+                    <p style="font-size:1rem; color:{{ in_array($report->status, ['Investigating', 'Ditanggapi']) ? 'var(--text)' : 'var(--text-dim)' }}; font-weight:800; margin-bottom:0.25rem;">Sedang Ditinjau</p>
                     <p style="font-size:0.8rem; color:var(--text-muted);">Staff BK sedang memverifikasi detail laporan.</p>
                 </div>
                 

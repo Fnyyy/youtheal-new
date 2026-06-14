@@ -77,18 +77,21 @@ class AdminController extends Controller
     public function storeResponse(Request $request, $report_id)
     {
         $request->validate([
-            'message' => 'required|string'
+            'message' => 'nullable|string',
+            'status' => 'required|in:Pending,Investigating,Ditanggapi'
         ]);
 
         $report = Report::findOrFail($report_id);
         
-        Response::create([
-            'report_id' => $report->id,
-            'message' => $request->message
-        ]);
+        if ($request->filled('message')) {
+            Response::create([
+                'report_id' => $report->id,
+                'message' => $request->message
+            ]);
+        }
 
-        $report->update(['status' => 'Ditanggapi']);
+        $report->update(['status' => $request->status]);
 
-        return back()->with('success', 'Tanggapan Terkirim!');
+        return back()->with('success', 'Status/Tanggapan Terkirim!');
     }
 }

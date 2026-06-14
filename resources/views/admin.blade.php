@@ -328,7 +328,7 @@
     <main class="main-area">
         @php
             $pending = $reports->where('status','Pending')->count();
-            $processing = 0; // Placeholder for investigating
+            $processing = $reports->where('status','Investigating')->count();
             $resolved = $reports->where('status','Ditanggapi')->count();
             $total = $reports->count();
         @endphp
@@ -439,6 +439,10 @@
                                     <span style="display:flex; align-items:center; gap:0.4rem; color:#ff4f47; font-size:0.85rem; font-weight:600;">
                                         <div style="width:6px;height:6px;border-radius:50%;background:#ff4f47;"></div> Perlu Tindakan
                                     </span>
+                                @elseif($report->status == 'Investigating')
+                                    <span style="display:flex; align-items:center; gap:0.4rem; color:#f59e0b; font-size:0.85rem; font-weight:600;">
+                                        <div style="width:6px;height:6px;border-radius:50%;background:#f59e0b;"></div> Sedang Diproses
+                                    </span>
                                 @else
                                     <span style="display:flex; align-items:center; gap:0.4rem; color:#34d399; font-size:0.85rem; font-weight:600;">
                                         <div style="width:6px;height:6px;border-radius:50%;background:#34d399;"></div> Ditanggapi
@@ -510,19 +514,19 @@
                                                     <label style="display:block; font-size:0.8rem; color:#a1a1aa; margin-bottom:0.4rem;">Perbarui Status</label>
                                                     <select name="status" style="width:100%; background:#ffffff; border:1px solid rgba(0,0,0,0.15); color:#111827; padding:0.6rem; border-radius:6px; font-family:inherit; font-size:0.85rem;">
                                                         <option value="Pending" {{ $report->status == 'Pending' ? 'selected' : '' }}>Pending (Perlu Tindakan)</option>
-                                                        <option value="Investigating">Sedang Diproses (Investigasi)</option>
+                                                        <option value="Investigating" {{ $report->status == 'Investigating' ? 'selected' : '' }}>Sedang Diproses (Investigasi)</option>
                                                         <option value="Ditanggapi" {{ $report->status == 'Ditanggapi' ? 'selected' : '' }}>Selesai (Ditanggapi)</option>
                                                     </select>
                                                 </div>
 
                                                 <div style="margin-bottom:1.5rem;">
                                                     <label style="display:block; font-size:0.8rem; color:#a1a1aa; margin-bottom:0.4rem;">Pesan / Feedback Staff (Dikirim ke Pelapor)</label>
-                                                    <textarea name="message" rows="3" style="width:100%; background:#ffffff; border:1px solid rgba(0,0,0,0.15); color:#111827; padding:0.6rem; border-radius:6px; font-family:inherit; font-size:0.85rem; resize:vertical;" placeholder="Tuliskan tindakan yang telah diambil atau pesan dukungan..."></textarea>
+                                                    <textarea name="message" rows="3" style="width:100%; background:#ffffff; border:1px solid rgba(0,0,0,0.15); color:#111827; padding:0.6rem; border-radius:6px; font-family:inherit; font-size:0.85rem; resize:vertical;" placeholder="Tuliskan tindakan yang diambil (opsional jika hanya ubah status)"></textarea>
                                                 </div>
 
                                                 <button type="submit" class="btn-ws btn-ws-primary" style="width:100%; justify-content:center;">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                                    Selesaikan Laporan
+                                                    Update / Selesaikan Laporan
                                                 </button>
                                             </form>
                                         </div>
